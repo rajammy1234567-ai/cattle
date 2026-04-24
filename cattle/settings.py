@@ -25,10 +25,9 @@ ALLOWED_HOSTS = [   "brahamjyoti.com",
 
 # ========== CLOUDINARY CONFIGURATION ==========
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': env('CLOUDINARY_CLOUD_NAME', default=''),
-    'API_KEY': env('CLOUDINARY_API_KEY', default=''),
-    'API_SECRET': env('CLOUDINARY_API_SECRET', default=''),
-    'SECURE': True,  # Use HTTPS
+    'CLOUD_NAME': '',
+    'API_KEY': '',
+    'API_SECRET': '',
 }
 
 # Configure Cloudinary SDK
@@ -161,9 +160,9 @@ WHITENOISE_MANIFEST_STRICT = False
 MEDIA_URL = '/media/'  # This becomes a Cloudinary URL
 
 # ========== RAZORPAY ==========
-RAZORPAY_KEY_ID = env('RAZORPAY_KEY_ID', default='')
-RAZORPAY_KEY_SECRET = env('RAZORPAY_KEY_SECRET', default='')
-RAZORPAY_WEBHOOK_SECRET = env('RAZORPAY_WEBHOOK_SECRET', default='')
+RAZORPAY_KEY_ID = ''
+RAZORPAY_KEY_SECRET = ''
+RAZORPAY_WEBHOOK_SECRET = ''
 
 # ========== JAZZMIN ==========
 JAZZMIN_SETTINGS = {

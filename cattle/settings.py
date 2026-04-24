@@ -1,6 +1,6 @@
 import os
 from pathlib import Path
-import environ
+
 import importlib.util
 import dj_database_url
 
@@ -10,28 +10,12 @@ import cloudinary.uploader
 import cloudinary.api
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-env = environ.Env()
 
-# Read .env files
-read_any = False
-root_env = BASE_DIR / '.env'
-alt_env = BASE_DIR / 'cattle' / '.env'
 
-if root_env.exists():
-    environ.Env.read_env(str(root_env))
-    read_any = True
-if alt_env.exists():
-    environ.Env.read_env(str(alt_env))
-    read_any = True
 
-if not read_any:
-    try:
-        environ.Env.read_env()
-    except Exception:
-        pass
 
-SECRET_KEY = env('SECRET_KEY', default='dev-secret')
-DEBUG = env.bool('DEBUG', default=False)
+SECRET_KEY = "abc123secretkey"
+DEBUG = False
 
 ALLOWED_HOSTS = [   "brahamjyoti.com",
     "www.brahamjyoti.com",
@@ -126,7 +110,7 @@ WSGI_APPLICATION = 'cattle.wsgi.application'
 # ========== DATABASE ==========
 DATABASES = {
     'default': dj_database_url.config(
-        default=env('DATABASE_URL', default='sqlite:///db.sqlite3'),
+      default='sqlite:///db.sqlite3',
         conn_max_age=600
     )
 }
@@ -143,8 +127,8 @@ LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = env('SOCIAL_AUTH_GOOGLE_OAUTH2_KEY', default='')
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = env('SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET', default='')
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = ""
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = ""
 SOCIAL_AUTH_URL_NAMESPACE = 'social'
 
 SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = [

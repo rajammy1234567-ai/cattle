@@ -3,7 +3,7 @@ from pathlib import Path
 
 import importlib.util
 import dj_database_url
-
+import os
 # Initialize Cloudinary (optional but good practice)
 import cloudinary
 import cloudinary.uploader
@@ -17,17 +17,20 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "abc123secretkey"
 DEBUG = False
 
-ALLOWED_HOSTS = [   "brahamjyoti.com",
+ALLOWED_HOSTS = [
+    "brahamjyoti.com",
     "www.brahamjyoti.com",
     "cattle-1.onrender.com",
+    ".onrender.com",
     "localhost",
-    "127.0.0.1"]
-
+    "127.0.0.1"
+]
 # ========== CLOUDINARY CONFIGURATION ==========
+
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': '',
-    'API_KEY': '',
-    'API_SECRET': '',
+    'CLOUD_NAME': os.getenv('CLOUDINARY_CLOUD_NAME'),
+    'API_KEY': os.getenv('CLOUDINARY_API_KEY'),
+    'API_SECRET': os.getenv('CLOUDINARY_API_SECRET'),
 }
 
 # Configure Cloudinary SDK
@@ -139,7 +142,7 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = [
 SOCIAL_AUTH_REDIRECT_IS_HTTPS = not DEBUG
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 USE_X_FORWARDED_HOST = True
-SECURE_SSL_REDIRECT = not DEBUG
+SECURE_SSL_REDIRECT = False
 
 # ========== INTERNATIONALIZATION ==========
 LANGUAGE_CODE = 'en-us'
